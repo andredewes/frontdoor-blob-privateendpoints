@@ -13,7 +13,7 @@ This article will guide you step-by-step how to do that. It is **not** the purpo
 
 ## Steps
 
-1) Follow the steps in the [https://learn.microsoft.com/en-us/azure/frontdoor/standard-premium/how-to-enable-private-link-storage-account](official FrontDoor documentation) on how to enable private link to a Storage Account.
+1) Follow the steps in the [official FrontDoor documentation](https://learn.microsoft.com/en-us/azure/frontdoor/standard-premium/how-to-enable-private-link-storage-account) on how to enable private link to a Storage Account.
 
 2) Up to this point, you only configured Front Door to communicate with your Storage Account without public traffic. Now, if you already had a created Storage Account with Static Website feature enabled when following the previous steps, you will need to **disable** it.
 
@@ -29,7 +29,7 @@ Set the new container Access level to **Blob (anonymous read-access to blobs onl
 
 This will ensure that the blobs under *sites* container will not be directly accessible even we have configured its Access Level to *Blob (anonymous read-access to blobs only)*
 
-5) Give it a few minutes and you should be able to access your website using the FrontDoor endpoint now, without using the Storage Account "Static website" feature. However, we lost a very important feature: the **default file** to be served when users access our domain. Now, people would need to type the full path to the *index* file: https://yourdomain.com/**index.html**. How can we have the same behavior now in FrontDoor? For that, we will use its [Rule set](https://learn.microsoft.com/en-us/azure/frontdoor/standard-premium/how-to-configure-rule-set) options. Go to *FrontDoor, menu Rule set -> Add* and add this rewrite rule:
+5) Give it a few minutes and you should be able to access your website using the FrontDoor endpoint now, without using the Storage Account "Static website" feature. However, we lost a very important feature: the **default file** to be served when users access our domain. Now, people would need to type the full path to the *index* file: https://yourdomain.com/index.html. How can we have the same behavior now in FrontDoor? For that, we will use its [Rule set](https://learn.microsoft.com/en-us/azure/frontdoor/standard-premium/how-to-configure-rule-set) options. Go to *FrontDoor, menu Rule set -> Add* and add this rewrite rule:
 
 ![rule](images/3-ruleset.png)
 
